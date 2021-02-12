@@ -31,7 +31,7 @@ namespace PriceMonitor
                             bool shouldTrigger = true;
 
                             // if fluctuations less than Sensitivity value, do not send notification
-                            if (BuyTrigger.LastNotificationThreshold != null && Math.Abs(price - _price) < Math.Abs(BuyTrigger.Sensitivity))
+                            if (BuyTrigger.LastNotificationPrice != null && Math.Abs(price - Convert.ToDouble(BuyTrigger.LastNotificationPrice)) < Math.Abs(BuyTrigger.Sensitivity))
                             {
                                 shouldTrigger = false;
                             }
@@ -43,7 +43,7 @@ namespace PriceMonitor
                                 args.Threshold = Convert.ToDouble(BuyTrigger.Threshold);
                                 args.TimeReached = DateTime.Now;
                                 OnBuyTriggerThresholdReached(args);
-                                BuyTrigger.LastNotificationThreshold = BuyTrigger.Threshold;
+                                BuyTrigger.LastNotificationPrice = price;
                             }
                         }
                     }
@@ -53,7 +53,7 @@ namespace PriceMonitor
                         bool shouldTrigger = true;
 
                         // if fluctuations less than Sensitivity value, do not send notification
-                        if (BuyTrigger.LastNotificationThreshold != null && Math.Abs(price - _price) < Math.Abs(BuyTrigger.Sensitivity))
+                        if (BuyTrigger.LastNotificationPrice != null && Math.Abs(price - Convert.ToDouble(BuyTrigger.LastNotificationPrice)) < Math.Abs(BuyTrigger.Sensitivity))
                         {
                             shouldTrigger = false;
                         }
@@ -65,7 +65,7 @@ namespace PriceMonitor
                             args.Threshold = Convert.ToDouble(BuyTrigger.Threshold);
                             args.TimeReached = DateTime.Now;
                             OnBuyTriggerThresholdReached(args);
-                            BuyTrigger.LastNotificationThreshold = BuyTrigger.Threshold;
+                            BuyTrigger.LastNotificationPrice = price;
                         }
                     }
                 }
@@ -81,7 +81,7 @@ namespace PriceMonitor
                             bool shouldTrigger = true;
 
                             // if fluctuations less than Sensitivity value, do not send notification
-                            if (SellTrigger.LastNotificationThreshold != null && Math.Abs(price - _price) < Math.Abs(SellTrigger.Sensitivity))
+                            if (SellTrigger.LastNotificationPrice != null && Math.Abs(price - Convert.ToDouble(SellTrigger.LastNotificationPrice)) < Math.Abs(SellTrigger.Sensitivity))
                             {
                                 shouldTrigger = false;
                             }
@@ -93,7 +93,7 @@ namespace PriceMonitor
                                 args.Threshold = Convert.ToDouble(SellTrigger.Threshold);
                                 args.TimeReached = DateTime.Now;
                                 OnSellTriggerThresholdReached(args);
-                                SellTrigger.LastNotificationThreshold = SellTrigger.Threshold;
+                                SellTrigger.LastNotificationPrice = price;
                             }
                         }
                     }
@@ -103,7 +103,7 @@ namespace PriceMonitor
                         bool shouldTrigger = true;
 
                         // if fluctuations less than Sensitivity value, do not send notification
-                        if (SellTrigger.LastNotificationThreshold != null && Math.Abs(price - _price) < Math.Abs(SellTrigger.Sensitivity))
+                        if (SellTrigger.LastNotificationPrice != null && Math.Abs(price - Convert.ToDouble(SellTrigger.LastNotificationPrice)) < Math.Abs(SellTrigger.Sensitivity))
                         {
                             shouldTrigger = false;
                         }
@@ -115,7 +115,7 @@ namespace PriceMonitor
                             args.Threshold = Convert.ToDouble(SellTrigger.Threshold);
                             args.TimeReached = DateTime.Now;
                             OnSellTriggerThresholdReached(args);
-                            SellTrigger.LastNotificationThreshold = SellTrigger.Threshold;
+                            SellTrigger.LastNotificationPrice = price;
                         }
                     }
                 }

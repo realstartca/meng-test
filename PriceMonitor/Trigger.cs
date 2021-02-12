@@ -10,7 +10,7 @@ namespace PriceMonitor
         public TriggerTypeEnum TriggerType { get; set; }
         public TriggerDirectionEnum TriggerDirection { get; set; }
         public double? Threshold { get; set; }
-        public double? LastNotificationThreshold { get; set; }
+        public double? LastNotificationPrice { get; set; }
         public double Sensitivity { get; set; }
     }
 }
