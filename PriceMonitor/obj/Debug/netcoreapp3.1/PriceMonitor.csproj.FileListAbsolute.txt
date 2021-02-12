@@ -1,0 +1,13 @@
+C:\Meng\Projects\MengTest\PriceMonitor\bin\Debug\netcoreapp3.1\PriceMonitor.exe
+C:\Meng\Projects\MengTest\PriceMonitor\bin\Debug\netcoreapp3.1\PriceMonitor.deps.json
+C:\Meng\Projects\MengTest\PriceMonitor\bin\Debug\netcoreapp3.1\PriceMonitor.runtimeconfig.json
+C:\Meng\Projects\MengTest\PriceMonitor\bin\Debug\netcoreapp3.1\PriceMonitor.runtimeconfig.dev.json
+C:\Meng\Projects\MengTest\PriceMonitor\bin\Debug\netcoreapp3.1\PriceMonitor.dll
+C:\Meng\Projects\MengTest\PriceMonitor\bin\Debug\netcoreapp3.1\PriceMonitor.pdb
+C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.AssemblyInfoInputs.cache
+C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.AssemblyInfo.cs
+C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.csproj.CoreCompileInputs.cache
+C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.dll
+C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.pdb
+C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.genruntimeconfig.cache
+C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.csprojAssemblyReference.cache
