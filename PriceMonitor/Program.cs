@@ -100,11 +100,15 @@ namespace PriceMonitor
         static void BuyTriggerThresholdReachedHandler(object sender, ThresholdReachedEventArgs e)
         {
             Console.WriteLine($"The buy trigger threshold of {e.Threshold} was reached at {e.TimeReached}.");
+
+            // User plugin buy logic here
         }
 
         static void SellTriggerThresholdReachedHandler(object sender, ThresholdReachedEventArgs e)
         {
             Console.WriteLine($"The sell trigger threshold of {e.Threshold} was reached at {e.TimeReached}.");
+
+            // User plugin Sell logic here
         }
     }
 }
