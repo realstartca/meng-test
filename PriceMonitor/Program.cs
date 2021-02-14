@@ -127,7 +127,7 @@ namespace PriceMonitor
 
         static void SellTriggerThresholdReachedHandler(object sender, ThresholdReachedEventArgs e)
         {
-            Console.WriteLine($"The sell trigger threshold of {e.Threshold} was reached at {e.TimeReached}, current price is {e.Price}..");
+            Console.WriteLine($"The sell trigger threshold of {e.Threshold} was reached at {e.TimeReached}, current price is {e.Price}.");
 
             // User plugin sell logic here
         }
