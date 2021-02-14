@@ -10,4 +10,3 @@ C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.cspr
 C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.dll
 C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.pdb
 C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.genruntimeconfig.cache
-C:\Meng\Projects\MengTest\PriceMonitor\obj\Debug\netcoreapp3.1\PriceMonitor.csprojAssemblyReference.cache
