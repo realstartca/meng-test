@@ -10,8 +10,6 @@ namespace PriceMonitor
         {
             bool exit = false;
             PriceMoniter priceMoniter = new PriceMoniter();
-            priceMoniter.BuyTriggerThresholdReached += BuyTriggerThresholdReachedHandler;
-            priceMoniter.SellTriggerThresholdReached += SellTriggerThresholdReachedHandler;
 
             while (!exit)
             {
@@ -46,9 +44,32 @@ namespace PriceMonitor
 
                             Console.WriteLine("Please set the trigger sensitivity");
                             double sensitivity = Convert.ToDouble(Console.ReadLine());
-
-                            priceMoniter.SetTrigger(threshold, sensitivity, triggerType, triggerDirection);
-
+                            
+                            if (triggerType == TriggerTypeEnum.Buy)
+                            {
+                                if (priceMoniter.BuyTrigger == null)
+                                {
+                                    priceMoniter.InitTrigger(threshold, sensitivity, triggerType, triggerDirection);
+                                    priceMoniter.BuyTrigger.TriggerThresholdReached += BuyTriggerThresholdReachedHandler;
+                                }
+                                else
+                                {
+                                    priceMoniter.UpdateTrigger(threshold, sensitivity, triggerType, triggerDirection);
+                                }
+                            }
+                            else if (triggerType == TriggerTypeEnum.Sell)
+                            {
+                                if (priceMoniter.SellTrigger == null)
+                                {
+                                    priceMoniter.InitTrigger(threshold, sensitivity, triggerType, triggerDirection);
+                                    priceMoniter.SellTrigger.TriggerThresholdReached += SellTriggerThresholdReachedHandler;
+                                }
+                                else
+                                {
+                                    priceMoniter.UpdateTrigger(threshold, sensitivity, triggerType, triggerDirection);
+                                }
+                            }
+                            
                             Console.WriteLine($"Trigger Type: {triggerType}, Trigger Direction: {triggerDirection}, Trigger Threshold: {threshold}, Trigger Sensitivity: {sensitivity}");
                             Console.WriteLine();
                             break;
@@ -99,7 +120,7 @@ namespace PriceMonitor
 
         static void BuyTriggerThresholdReachedHandler(object sender, ThresholdReachedEventArgs e)
         {
-            Console.WriteLine($"The buy trigger threshold of {e.Threshold} was reached at {e.TimeReached}.");
+            Console.WriteLine($"The buy trigger threshold of {e.Threshold} was reached at {e.TimeReached}, current price is {e.Price}.");
 
             // User plugin buy logic here
         }

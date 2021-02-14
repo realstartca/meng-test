@@ -13,9 +13,6 @@ namespace PriceMonitor
         public Trigger BuyTrigger { get; set; }
         public Trigger SellTrigger { get; set; }
 
-        public event EventHandler<ThresholdReachedEventArgs> BuyTriggerThresholdReached;
-        public event EventHandler<ThresholdReachedEventArgs> SellTriggerThresholdReached;
-
         public void SetPrice(double price)
         {
             try
@@ -41,8 +38,9 @@ namespace PriceMonitor
                                 // Send BuyTrigger notificaiton
                                 ThresholdReachedEventArgs args = new ThresholdReachedEventArgs();
                                 args.Threshold = Convert.ToDouble(BuyTrigger.Threshold);
+                                args.Price = price;
                                 args.TimeReached = DateTime.Now;
-                                OnBuyTriggerThresholdReached(args);
+                                BuyTrigger.OnTriggerThresholdReached(args);
                                 BuyTrigger.LastNotificationPrice = price;
                             }
                         }
@@ -63,8 +61,9 @@ namespace PriceMonitor
                             // Send BuyTrigger notificaiton
                             ThresholdReachedEventArgs args = new ThresholdReachedEventArgs();
                             args.Threshold = Convert.ToDouble(BuyTrigger.Threshold);
+                            args.Price = price;
                             args.TimeReached = DateTime.Now;
-                            OnBuyTriggerThresholdReached(args);
+                            BuyTrigger.OnTriggerThresholdReached(args);
                             BuyTrigger.LastNotificationPrice = price;
                         }
                     }
@@ -91,8 +90,9 @@ namespace PriceMonitor
                                 // Send SellTrigger notificaiton
                                 ThresholdReachedEventArgs args = new ThresholdReachedEventArgs();
                                 args.Threshold = Convert.ToDouble(SellTrigger.Threshold);
+                                args.Price = price;
                                 args.TimeReached = DateTime.Now;
-                                OnSellTriggerThresholdReached(args);
+                                SellTrigger.OnTriggerThresholdReached(args);
                                 SellTrigger.LastNotificationPrice = price;
                             }
                         }
@@ -113,8 +113,9 @@ namespace PriceMonitor
                             // Send SellTrigger notificaiton
                             ThresholdReachedEventArgs args = new ThresholdReachedEventArgs();
                             args.Threshold = Convert.ToDouble(SellTrigger.Threshold);
+                            args.Price = price;
                             args.TimeReached = DateTime.Now;
-                            OnSellTriggerThresholdReached(args);
+                            SellTrigger.OnTriggerThresholdReached(args);
                             SellTrigger.LastNotificationPrice = price;
                         }
                     }
@@ -127,8 +128,8 @@ namespace PriceMonitor
 
             _price = price;
         }
-        
-        public void SetTrigger(double threshold, double sensitivity, TriggerTypeEnum triggerType, TriggerDirectionEnum? triggerDirection)
+
+        public void InitTrigger(double threshold, double sensitivity, TriggerTypeEnum triggerType, TriggerDirectionEnum? triggerDirection)
         {
             Trigger trigger = new Trigger()
             {
@@ -148,21 +149,15 @@ namespace PriceMonitor
             }
         }
 
-        protected virtual void OnBuyTriggerThresholdReached(ThresholdReachedEventArgs e)
+        public void UpdateTrigger(double threshold, double sensitivity, TriggerTypeEnum triggerType, TriggerDirectionEnum? triggerDirection)
         {
-            EventHandler<ThresholdReachedEventArgs> handler = BuyTriggerThresholdReached;
-            if (handler != null)
+            if (triggerType == TriggerTypeEnum.Buy)
             {
-                handler(this, e);
+                BuyTrigger.UpdateValue(threshold, sensitivity, triggerType, triggerDirection);
             }
-        }
-
-        protected virtual void OnSellTriggerThresholdReached(ThresholdReachedEventArgs e)
-        {
-            EventHandler<ThresholdReachedEventArgs> handler = SellTriggerThresholdReached;
-            if (handler != null)
+            else if (triggerType == TriggerTypeEnum.Sell)
             {
-                handler(this, e);
+                SellTrigger.UpdateValue(threshold, sensitivity, triggerType, triggerDirection);
             }
         }
     }
